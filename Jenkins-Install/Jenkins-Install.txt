@@ -1,0 +1,63 @@
+Installing Jenkins In Ubuntu ::
+
+1-First, add the repository key to the system:
+
+Command:: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+Output:: After the key is added the system will return with OK.
+
+2- Next, let’s append the Debian package repository address to the server’s sources.list:
+
+Command:: sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+3- After both commands have been entered, we’ll run update so that apt will use the new repository.
+
+Command: sudo apt update && sudo apt install jenkins
+
+4- Start Jenkins 
+
+Command:: sudo systemctl start jenkins 
+Output::  ● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Fri 2020-06-05 21:21:46 UTC; 45s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 1137)
+   CGroup: /system.slice/jenkins.service
+
+5- Opening the firewall
+
+Command:: sudo ufw allow 8080
+
+NOTE:: If the firewall is inactive, the following commands will allow OpenSSH and enable the firewall:
+ 
+Command:: sudo ufw allow OpenSSH
+          sudo ufw enable
+
+6- Checking the status
+
+Command:: sudo ufw status
+
+Output:: Output
+        Status: active
+
+        To                         Action      From
+        --                         ------      ----
+        OpenSSH                    ALLOW       Anywhere
+        8080                       ALLOW       Anywhere
+        OpenSSH (v6)               ALLOW       Anywhere (v6)
+        8080 (v6)                  ALLOW       Anywhere (v6)
+
+7— Setting Up Jenkins
+To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://your_server_ip_or_domain:8080
+
+In the terminal window, use the cat command to display the password:
+
+Command:: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Follow the commands and it would be done::
+
+
+
+
+
+More to follow:::   How to Configure Jenkins with SSL Using an Nginx Reverse Proxy on Ubuntu 20.04  :: https://www.digitalocean.com/community/tutorials/how-to-configure-jenkins-with-ssl-using-an-nginx-reverse-proxy-on-ubuntu-20-04

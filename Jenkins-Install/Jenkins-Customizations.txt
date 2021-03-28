@@ -1,0 +1,33 @@
+Important For Jenkins:: 
+
+----------jenkins-------------------------------------------------------------------
+
+param.  - means using interpolation
+env.(variable)  - getting the environament variable
+http://localhost:8080/env-vars.html/ - site to check environament variales in jenkins
+We can define our own environment variables using an attribute called environment
+environemnt{
+}
+credentails()- It is a method to extract credentials from Jenkins- It binds the credetials to your env variable
+server_credetials = credentails('ID') , it takes ID referance of the credentails in jenkins
+Need to have credentaials Binding plugin
+IF we are going to use the credentails in a specific state - it's better to define them inside
+a wrapper - withCredentails()
+withCredentails() - is a wrapper that takes as a parameter and object, 
+object is usernamePassword() - this is basically a function that help us get the username and password individually 
+usernamePassword(credentails : 'ID', 
+The reason we used usernamePassword is because the type of credentails we created is username and pass
+
+Credentails and Credentails Binding plugin should be used
+Credentails plugin allows to create credentails in Jenkins UI
+and Binding plugin allows to use credentails in env variables in jenkinsfile
+
+build tools we are using ??
+what tools are we using to build the image
+
+We can add Jenkins credentails as System or Global scope,
+System credentails - means only available on Jenkins server , not for Jenkins job
+Global - accessible everywhere
+
+3rd scope comes only with multi-branch pipeline
+Comes from folder plugin
