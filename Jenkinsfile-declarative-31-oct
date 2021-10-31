@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                // git 'https://github.com/Harkirat30/jenkins.git'
-                echo "Commenting above line as it would already have done git checkout by adding credentials in the pipeline
+                // Get some code from a GitHub repository.
+                sh 'ls -ltr'
             }
         }
     }
