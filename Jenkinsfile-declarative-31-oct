@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git 'https://github.com/Harkirat30/jenkins.git'
+                // git 'https://github.com/Harkirat30/jenkins.git'
+                echo "Commenting above line as it would already have done git checkout by adding credentials in the pipeline
             }
         }
     }
