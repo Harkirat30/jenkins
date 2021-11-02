@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                // Get some code from a GitHub repository.
+                sh 'ls -ltr'
+            }
+        }
+    }
+}
