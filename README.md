@@ -47,4 +47,5 @@ pipeline{
 SYNTAX -->>   <VariableName> = "<VariableValue>"
 
 2) Pre-defined variables are the ones given by jenkins by default 
-http://localhost:8080/env-vars.html/test for branch
+http://localhost:8080/env-vars.html
+
