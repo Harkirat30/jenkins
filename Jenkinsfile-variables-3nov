@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+    // This type of declaration is global or pipeline level
+    environment{
+        ToolName="Jenkins"
+
+    }
+    stages{
+        stage("Declaration type variables"){
+            environment{
+                StageVariable="InsideStage"
+            }
+            steps{
+                echo "Global variables is $ToolName and stage one is $StageVariable"
+            }
+
+    }
+}
+}

@@ -49,3 +49,21 @@ SYNTAX -->>   <VariableName> = "<VariableValue>"
 2) Pre-defined variables are the ones given by jenkins by default 
 http://localhost:8080/env-vars.html
 
+3) Variable declaration can be done at 3 places :
+   - Global (Pipeline) level
+   - Stage level
+   - Script level
+
+* For defining variables under steps section, we can't use environment block,
+We need to call it as scripts,
+* Syntax is as follows -> 
+steps{
+                script{
+                    ScriptName="Harkirat is awesome"
+                }
+                echo "Step defined variable is $ScriptName"
+            }
+4) Scope of variables 
+If we define the same variable at global(pipeline) level and stage level, then the importance 
+would be taken at stage level, not at pipeline level
+5) [NOTE]

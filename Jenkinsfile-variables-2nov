@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+    environment{
+        ToolName="Jenkins"
+    }
+    stages{
+        stage("User defined variables"){
+            steps {
+                echo "Tool name used is ${ToolName}"
+            }
+        }
+
+}
+}
