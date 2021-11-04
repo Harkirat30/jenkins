@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+    environment{
+        Name="Pipeline"
+    }
+    stages{
+        stage("Variable scope under step"){
+            environment{
+        Name="Stage"
+    }
+            steps{
+                script{
+                    Name="Harkirat"
+                }
+                echo "Variable defined at step level using script is $Name"
+            }
+        }
+    }
+}
+
+//This pipeline gives you idea that a variable defined at steps level takes precedance over stage and pipeline level
