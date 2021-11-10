@@ -1,0 +1,61 @@
+pipeline{
+    agent any
+    parameters{
+        string(name: 'Tool', defaultValue: 'Jenkins running in docker', description: 'Who should i Say hello to')
+        text(name: 'Desc', defaultValue: 'Bohemia\nis\nAwesome\n', description: 'Enter some info about the person')
+        booleanParam(name: 'SONAR', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: 'One way of writing choice')
+        // another way of writing choice
+        choice(name: 'CHOICESS', choices: "Build\nTest\nDeploy\n", description: 'delimiteres withing string')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password')
+        file(name: "FILE", description: "Choose File")
+    }
+    stages{
+        stage("First String parameter print"){
+            steps {
+                echo "Ways of priniting String parameter fetched from the input are -> \$Tool or \${params.Tool} --> $Tool or ${params.Tool}"
+            }
+        }
+        stage("Fetching choice parameter value"){
+            steps{
+                echo "Ways of printing Choice parameter fetched from the input are --> \$CHOICES or \${params.CHOICES}--> $CHOICES or ${params.CHOICES}"
+            }
+        }
+        stage("Boolean for Sonar"){
+            steps{
+                script{ // below step means if params.SONAR is yes go for next step
+                    if (params.SONAR){
+                        echo "Sonar steps will execute"
+                    }
+                }
+        }
+        }
+        stage("Build"){
+            steps{
+                script{
+                    if (params.CHOICESS=="Build"){
+                        echo "This will only run if inside you selected Build"
+                    }
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                script{
+                    if (params.CHOICESS=="Test"){
+                        echo "This will only run if inside you selected test"
+                    }
+                }
+            }
+        }
+        stage("Deploy"){
+            steps{
+                script{
+                    if (params.CHOICESS=="Deploy"){
+                        echo "This will only run if inside you selected Deploy"
+                    }
+                }
+            }
+        }
+    }
+}
